@@ -30,7 +30,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@v2
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
@@ -43,7 +43,7 @@ jobs:
         powershell Compress-Archive -Path out\${{env.BUILD_CONFIGURATION}}\${{env.BUILD_PLATFORM}}\*.exe, out\${{env.BUILD_CONFIGURATION}}\${{env.BUILD_PLATFORM}}\*.pdb -DestinationPath nssm.zip
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: build-output
         path: nssm.zip
